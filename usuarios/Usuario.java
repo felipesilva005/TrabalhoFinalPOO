@@ -8,7 +8,7 @@ public abstract class Usuario {
     private static int contId = 1;
     private final int id;
     private String nome;
-    private String cpf;
+    private final String cpf;
     private String email;
     private String senha;
 
@@ -77,11 +77,11 @@ public abstract class Usuario {
         }
 
         if(!temMaiuscula) {
-            throw new SenhaInvalidaException("A SENHA precisa ter letras MAIUSCÚLOS.");
+            throw new SenhaInvalidaException("A SENHA precisa ter letras MAIÚSCULAS.");
 
         }
         if (!temMinuscula) {
-            throw new SenhaInvalidaException("A SENHA precisa ter letras MINUSCÚLOS.");
+            throw new SenhaInvalidaException("A SENHA precisa ter letras MINÚSCULAS.");
 
         }
         if (!temNumero) {
@@ -123,9 +123,25 @@ public abstract class Usuario {
         return email;
     }
 
+    public boolean autenticar(String senhaDigitada) {
+        return this.senha.equals(senhaDigitada);
+    }
+
     public void setEmail(String email) throws EmailInvalidoException {
         validarEmail(email);
         this.email = email;
+    }
+
+    public void redefinirSenha(String cpfInformado, String novaSenha) throws DadoInvalidoException {
+        String cpfLimpo = validarCpf(cpfInformado);
+
+        if(!this.cpf.equals(cpfLimpo)) {
+            throw new CpfInvalidoException("CPF não correspondente.");
+
+        }
+
+        validarSenha(novaSenha);
+        this.senha = novaSenha;
     }
 
     public abstract void exibirMenu();
