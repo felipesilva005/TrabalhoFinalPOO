@@ -1,4 +1,7 @@
 package usuarios;
+import animais.Animal;
+import animais.EstadoSaude;
+import excecoes.AcessoNegadoException;
 import excecoes.DadoInvalidoException;
 
 public class Veterinario extends Usuario {
@@ -24,5 +27,9 @@ public class Veterinario extends Usuario {
     @Override
     public void exibirMenu() { 
         System.out.println("ÁREA DO VETERINÁRIO");
+    }
+
+    public void atualizarEstadoSaude(Animal animal, EstadoSaude novoEstado) throws DadoInvalidoException, AcessoNegadoException {
+        animal.atualizarEstadoSaude(this, novoEstado);
     }
 }
