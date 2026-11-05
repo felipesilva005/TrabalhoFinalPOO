@@ -1,8 +1,5 @@
 package usuarios;
-import excecoes.CpfInvalidoException;
-import excecoes.DadoInvalidoException;
-import excecoes.EmailInvalidoException;
-import excecoes.SenhaInvalidaException;
+import excecoes.*;
 
 public abstract class Usuario {
     private static int contId = 1;
