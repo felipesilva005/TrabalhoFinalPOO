@@ -70,6 +70,6 @@ public class GerenciadorUsuarios {
     }
 
     public List<Usuario> listarTodosUsuarios() {
-        return new ArrayList<>(UsuariosList);
+        return UsuariosList;
     }
 }

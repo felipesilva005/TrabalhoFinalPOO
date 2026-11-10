@@ -82,7 +82,7 @@ public class GerenciadorAdocao {
     }
 
     public List<Adocao> historico() {
-        return new ArrayList<>(adocoesList);
+        return adocoesList;
 
     }
 }

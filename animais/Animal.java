@@ -1,7 +1,10 @@
 package animais;
 import excecoes.*;
 import usuarios.*;
+import saude.*;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Animal {
     private static int contId = 1;
@@ -195,5 +198,13 @@ public class Animal {
             this.statusAdocao = StatusAdocao.NAO_DISPONIVEL;
 
         }
+    }
+
+    //Histórico médico e registro médico de cada animal:
+    private final List<RegistroMedico> historicoMedico = new ArrayList<>();
+
+    public List<RegistroMedico> getHistoricoMedico() {
+        return historicoMedico;
+        
     }
 }
