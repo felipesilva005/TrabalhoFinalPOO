@@ -4,7 +4,7 @@ import excecoes.*;
 import java.util.List;
 import java.util.ArrayList;
 
-public class GerenciadorUsuario {
+public class GerenciadorUsuarios {
     private final List<Usuario> UsuariosList = new ArrayList<>();
 
     //Cadastro de usuários.
@@ -24,7 +24,7 @@ public class GerenciadorUsuario {
     }
 
     //Filtros de busca;
-    public Usuario buscaPorEmail(String email) throws UsuarioNaoEncontradoException {
+    public Usuario buscarPorEmail(String email) throws UsuarioNaoEncontradoException {
         for(Usuario i : UsuariosList) {
             if(i.getEmail().equalsIgnoreCase(email.trim())) {
                 return i;
@@ -35,7 +35,7 @@ public class GerenciadorUsuario {
         throw new UsuarioNaoEncontradoException("O USUÁRIO não foi encontrado.");
     }
     
-    public Usuario buscaPorId(int id) throws UsuarioNaoEncontradoException {
+    public Usuario buscarPorId(int id) throws UsuarioNaoEncontradoException {
         for(Usuario i : UsuariosList) {
             if(i.getId() == id) {
                 return i;
@@ -52,7 +52,7 @@ public class GerenciadorUsuario {
         /*O try/catch captura a exceção de usuário não encontrado e a converte em login inválido. Assim, a mensagem
          é a mesma para e-mail inexistente e senha incorreta, impedindo também de "vazar" um e-mail já cadastrado.*/
         try {
-            Usuario i = buscaPorEmail(email);
+            Usuario i = buscarPorEmail(email);
             if(i.autenticar(senha)) {
                 return i;
             }
@@ -64,13 +64,12 @@ public class GerenciadorUsuario {
     }
 
     public void redefinirSenha(String email, String cpf, String novaSenha) throws UsuarioNaoEncontradoException, DadoInvalidoException {
-        Usuario i = buscaPorEmail(email);
+        Usuario i = buscarPorEmail(email);
         i.redefinirSenha(cpf, novaSenha);
 
     }
 
     public List<Usuario> listarTodosUsuarios() {
         return new ArrayList<>(UsuariosList);
-        
     }
 }
