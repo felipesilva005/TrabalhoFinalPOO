@@ -3,6 +3,8 @@ import animais.Animal;
 import animais.EstadoSaude;
 import excecoes.AcessoNegadoException;
 import excecoes.DadoInvalidoException;
+import excecoes.VacinaDuplicadaException;
+import saude.Registro;
 
 public class Veterinario extends Usuario {
     private final String crmv;
@@ -17,7 +19,7 @@ public class Veterinario extends Usuario {
         validarCrmv(crmv);
 
         super(nome, cpf, email, senha);
-        this.crmv = crmv;
+        this.crmv = crmv.toUpperCase();
     }
 
     public String getCrmv(){
@@ -31,5 +33,9 @@ public class Veterinario extends Usuario {
 
     public void atualizarEstadoSaude(Animal animal, EstadoSaude novoEstado) throws DadoInvalidoException, AcessoNegadoException {
         animal.atualizarEstadoSaude(this, novoEstado);
+    }
+
+    public void registrarAtendimento(Animal animal, Registro registro) throws AcessoNegadoException, DadoInvalidoException, VacinaDuplicadaException {
+        animal.adicionarRegistro(this, registro);
     }
 }

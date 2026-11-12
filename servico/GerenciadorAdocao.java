@@ -2,8 +2,11 @@ package servico;
 import usuarios.*;
 import excecoes.*;
 import animais.*;
-import adocoes.*;
+
 import java.util.List;
+
+import adocao.*;
+
 import java.util.ArrayList;
 
 public class GerenciadorAdocao {

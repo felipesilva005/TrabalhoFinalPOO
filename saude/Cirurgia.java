@@ -6,9 +6,9 @@ import java.time.LocalDate;
 public class Cirurgia extends Registro{
     private final String procedimento;
 
-    public Cirurgia(LocalDate data, Veterinario veterinario, String procedimento) throws DadoInvalidoException {
-        super(data, veterinario);
+    public Cirurgia(LocalDate data, Veterinario vet, String procedimento) throws DadoInvalidoException  {
         this.procedimento = exigirTexto(procedimento, "Procedimento Cirurgico");
+        super(data, vet);
 
     }
 
@@ -18,7 +18,7 @@ public class Cirurgia extends Registro{
 
     @Override 
     public String descrever(){
-        return "A cirugia de " + getProcedimento() + ", será realizada dia " + getData();
+        return "A cirurgia de " + getProcedimento() + ", será realizada dia " + getData();
         
     }
 }

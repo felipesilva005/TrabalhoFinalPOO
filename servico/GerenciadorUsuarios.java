@@ -70,6 +70,6 @@ public class GerenciadorUsuarios {
     }
 
     public List<Usuario> listarTodosUsuarios() {
-        return UsuariosList;
+         return new ArrayList<>(UsuariosList);//Retorna a cópia da lista, para não ser possível modificações externas; 
     }
 }

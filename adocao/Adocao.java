@@ -1,4 +1,4 @@
-package adocoes;
+package adocao;
 import animais.*;
 import excecoes.*;
 import usuarios.*;

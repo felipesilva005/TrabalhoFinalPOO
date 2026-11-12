@@ -1,4 +1,4 @@
-package adocoes;
+package adocao;
 
 public enum StatusSolicitacao {
     APROVADA("Solicitação APROVADA."),

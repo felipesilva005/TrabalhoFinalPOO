@@ -90,6 +90,6 @@ public class GerenciadorAnimais {
     }
 
     public List<Animal> listarTodos(){
-        return animaisList;
+        return new ArrayList<> (animaisList);
     }
 }

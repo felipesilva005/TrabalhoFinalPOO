@@ -204,7 +204,53 @@ public class Animal {
     private final List<RegistroMedico> historicoMedico = new ArrayList<>();
 
     public List<RegistroMedico> getHistoricoMedico() {
-        return historicoMedico;
+        return new ArrayList<>(historicoMedico);
         
+    }
+
+    public void adicionarRegistro(Usuario responsavel, Registro registro) throws AcessoNegadoException, DadoInvalidoException, VacinaDuplicadaException {
+        if (!(responsavel instanceof Veterinario)) {
+            throw new AcessoNegadoException("Apenas VETERINÁRIOS podem alterar informações médicas.");
+
+        }
+        if (registro == null) {
+            throw new DadoInvalidoException("O REGISTRO não pode ser nulo.");
+
+        }
+        if (registro instanceof Vacina) {
+            Vacina nova = (Vacina) registro;
+
+            for (RegistroMedico r : historicoMedico) {
+                if (r instanceof Vacina) {
+                    Vacina existente = (Vacina) r;
+
+                    if (existente.getData().equals(nova.getData()) && existente.getNome().equalsIgnoreCase(nova.getNome())) {
+                        //Verificação de vacina duplicada analisando tanto o nome da vacina como a data.
+                        throw new VacinaDuplicadaException("Esta vacina já foi registrada.");
+
+                    }
+                }
+            }
+        }
+        historicoMedico.add(registro);
+    }
+
+    /*Este método é reponsável por verificar o vencimento das vacinas dos animais, diante do prazo informado
+    ele devolve as vacinas vencidas e as que estão perto do vencimento, servindo de base para as notificações.*/
+    public List<Vacina> vacinasAVencer(int dias) {
+        List<Vacina> resultado = new ArrayList<>();
+        LocalDate limite = LocalDate.now().plusDays(dias);
+
+        for (RegistroMedico r : historicoMedico) {
+            if (r instanceof Vacina) {
+                Vacina v = (Vacina) r;
+
+                if (v.getProximaDose() != null && !v.getProximaDose().isAfter(limite)) {
+                    resultado.add(v);
+
+                }
+            }
+        }
+        return resultado;
     }
 }

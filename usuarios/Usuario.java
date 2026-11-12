@@ -133,7 +133,7 @@ public abstract class Usuario {
         String cpfLimpo = validarCpf(cpfInformado);
 
         if(!this.cpf.equals(cpfLimpo)) {
-            throw new CpfInvalidoException("CPF não correspondente.");
+            throw new CpfInvalidoException("CPF não correspondente ao da conta.");
 
         }
 
