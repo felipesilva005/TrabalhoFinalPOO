@@ -84,7 +84,7 @@ public class GerenciadorAnimais {
 
     }
 
-    public List<Animal> listarsDisponiveis() {
+    public List<Animal> listarDisponiveis() {
         return filtrarStatus(StatusAdocao.DISPONIVEL);
 
     }

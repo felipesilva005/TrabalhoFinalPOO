@@ -1,7 +1,8 @@
 package usuarios;
 import excecoes.*;
+import notificacoes.Notificavel;
 
-public abstract class Usuario {
+public abstract class Usuario implements Notificavel {
     private static int contId = 1;
     private final int id;
     private String nome;

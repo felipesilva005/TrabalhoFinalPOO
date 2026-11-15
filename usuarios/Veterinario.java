@@ -27,8 +27,15 @@ public class Veterinario extends Usuario {
     }
 
     @Override
-    public void exibirMenu() { 
-        System.out.println("ÁREA DO VETERINÁRIO");
+    public void exibirMenu() {
+        System.out.println("\n---------------------------------------------");
+        System.out.println("             ÁREA DO VETERINÁRIO");
+        System.out.println("---------------------------------------------");
+        System.out.println("1 - Consultar Animais");
+        System.out.println("2 - Registrar Atendimento");
+        System.out.println("3 - Atualizar Estado de Saúde");
+        System.out.println("4 - Ver Histórico Médico");
+        System.out.println("5 - Sair");
     }
 
     public void atualizarEstadoSaude(Animal animal, EstadoSaude novoEstado) throws DadoInvalidoException, AcessoNegadoException {

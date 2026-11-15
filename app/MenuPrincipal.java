@@ -44,6 +44,7 @@ public class MenuPrincipal {
                 case 4:
                     MenuAdministrador.imprimirAnimais(animais.listarDisponiveis());
                     break;
+
                 case 5:
                     System.out.println("Obrigado por utilizar o Sistema de Gerenciamento de Abrigos! \nSaindo...");
                     break;
@@ -73,7 +74,7 @@ public class MenuPrincipal {
     private void direcionar(Usuario u) {
         if(u instanceof Administrador) {
             Administrador admin = (Administrador) u;
-            //new MenuAdministrador(admin, usuarios, animais, adocao).executar();
+            new MenuAdministrador(admin, usuarios, animais, adocao).executar();
 
         }/*else if(u instanceof Veterinario) {
             Veterinario vet = (Veterinario) u;
@@ -103,7 +104,7 @@ public class MenuPrincipal {
 
         try {
             Usuario novo = (tipo == 1) ? new Voluntario(nome, cpf, email, senha) : new Veterinario(nome, cpf, email, senha, crmv);
-            usuarios.cadastrar(novo);
+            usuarios.cadastrarUsuario(novo);
             System.out.println("Cadastro realizado! ID: " + novo.getId());
 
         } catch (DadoInvalidoException | EmailJaCadastradoException | CpfJaCadastradoException e) {

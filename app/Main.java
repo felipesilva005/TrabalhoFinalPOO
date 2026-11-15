@@ -11,7 +11,7 @@ public class Main {
 
         // Administrador padrão.
         try {
-            usuarios.cadastrar(new Administrador("Administrador", "000.000.000-00", "admin@abrigo.com", "Adm@1234"));
+            usuarios.cadastrarUsuario(new Administrador("Administrador", "000.000.000-00", "admin@abrigo.com", "Adm@1234"));
 
         } catch (DadoInvalidoException | EmailJaCadastradoException | CpfJaCadastradoException e) {
             System.out.println("Erro ao criar administrador padrão: " + e.getMessage());

@@ -9,8 +9,18 @@ public class Administrador extends Usuario {
     }
 
     @Override
-    public void exibirMenu() { 
-        System.out.println("ÁREA DO ADMINISTRADOR");
+    public void exibirMenu() {
+    System.out.println("\n-----------------------------------------");
+    System.out.println("            ÁREA DO ADMINISTRADOR");
+    System.out.println("-----------------------------------------");
+    System.out.println("1 - Cadastrar Animal");
+    System.out.println("2 - Listar Animais");
+    System.out.println("3 - Remover Animal");
+    System.out.println("4 - Listar Usuários");
+    System.out.println("5 - Aprovar ou Rejeitar Adoções");
+    System.out.println("6 - Registrar Devolução");
+    System.out.println("7 - Sair");
+
     }
 
     public void concluirAdocao(Animal animal) throws AcessoNegadoException, AnimalIndisponivelException {

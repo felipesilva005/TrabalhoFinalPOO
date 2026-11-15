@@ -8,7 +8,13 @@ public class Voluntario extends Usuario {
     }
 
     @Override
-    public void exibirMenu() { 
-        System.out.println("ÁREA DO VOLUNTÁRIO");
+    public void exibirMenu() {
+        System.out.println("\n--------------------------------------------");
+        System.out.println("              ÁREA DO VOLUNTÁRIO");
+        System.out.println("--------------------------------------------");
+        System.out.println("1 - Visualizar Animais Disponíveis");
+        System.out.println("2 - Solicitar Adoção");
+        System.out.println("3 - Consultar Minhas Solicitações");
+        System.out.println("4 - Sair");
     }
 }
