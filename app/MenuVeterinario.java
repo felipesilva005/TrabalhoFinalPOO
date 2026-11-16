@@ -1,23 +1,32 @@
 package app;
 import animais.*;
 import excecoes.*;
+import notificacoes.Notificacao;
 import saude.*;
 import servico.GerenciadorAnimais;
+import servico.GerenciadorNotificacoes;
 import usuarios.Veterinario;
 import java.time.LocalDate;
+import java.util.List;
 
 public class MenuVeterinario {
     private final Veterinario vet;
     private final GerenciadorAnimais animais;
+    private final GerenciadorNotificacoes notificacoes;
 
-    public MenuVeterinario(Veterinario vet, GerenciadorAnimais animais) {
+    public MenuVeterinario(Veterinario vet, GerenciadorAnimais animais, GerenciadorNotificacoes notificacoes) {
         this.vet = vet;
         this.animais = animais;
-
+        this.notificacoes = notificacoes;
     }
 
     public void executar() {
         int opcao;
+        int novas = notificacoes.contarNaoLidas(vet);
+        if (novas > 0) {
+            System.out.println("[!] Você tem " + novas + " notificação(ões) nova(s).");
+            
+        }
 
         do {
             vet.exibirMenu();
@@ -40,14 +49,18 @@ public class MenuVeterinario {
                     break;
 
                 case 5:
-                    System.out.println("Saindo da área do veterinário...");
+                    verNotificacoes();
+                    break;
+
+                case 6:
+                    System.out.println("Obrigado por utilizar o Sistema de Gerenciamento de Abrigos! \nSaindo da área do veterinário...");
                     break;
 
                 default:
                     System.out.println("Opção inválida.");
 
             }
-        } while (opcao != 5);
+        } while (opcao != 6);
     }
 
     private Animal escolherAnimal() throws AnimalNaoEncontradoException {
@@ -133,5 +146,22 @@ public class MenuVeterinario {
             System.out.println("Erro: " + e.getMessage());
             
         }
+    }
+
+    private void verNotificacoes() {
+        List<Notificacao> minhas = notificacoes.doUsuario(vet);
+
+        if (minhas.isEmpty()) {
+            System.out.println("Nenhuma notificação.");
+            return;
+
+        }
+    
+        for (Notificacao n : minhas) {
+            System.out.println(n);
+
+        }
+
+        notificacoes.marcarTodasComoLidas(vet);
     }
 }

@@ -2,11 +2,8 @@ package servico;
 import usuarios.*;
 import excecoes.*;
 import animais.*;
-
-import java.util.List;
-
 import adocao.*;
-
+import java.util.List;
 import java.util.ArrayList;
 
 public class GerenciadorAdocao {
@@ -37,16 +34,20 @@ public class GerenciadorAdocao {
         throw new AdocaoNaoEncontradaException("O Usuário ID(" + id + ") não foi encontrado.");
     }
 
-    public void aprovar(Usuario responsavel, int idAdocao) throws AcessoNegadoException, AnimalIndisponivelException, AdocaoNaoEncontradaException {
+    public List<Adocao> aprovar(Usuario responsavel, int idAdocao) throws AcessoNegadoException, AnimalIndisponivelException, AdocaoNaoEncontradaException {
         Adocao escolhida = buscarPorId(idAdocao);
         escolhida.aprovarAdocao(responsavel);
 
+        List<Adocao> rejeitadas = new ArrayList();
         for (Adocao outra : adocoesList) {
             if (outra != escolhida && outra.getAnimal() == escolhida.getAnimal() && outra.getStatus() == StatusSolicitacao.EM_ANDAMENTO) {
                 outra.rejeitarAdocao(responsavel);
+                rejeitadas.add(outra);
                 
             }
         }
+
+        return rejeitadas;
     }
 
     public void rejeitar(Usuario responsavel, int idAdocao) throws AcessoNegadoException, AnimalIndisponivelException, AdocaoNaoEncontradaException {

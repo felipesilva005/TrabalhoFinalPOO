@@ -19,7 +19,11 @@ public class Administrador extends Usuario {
     System.out.println("4 - Listar Usuários");
     System.out.println("5 - Aprovar ou Rejeitar Adoções");
     System.out.println("6 - Registrar Devolução");
-    System.out.println("7 - Sair");
+    System.out.println("7 - Relatórios");
+    System.out.println("8 - Estatistícas");
+    System.out.println("9 - Vizualizar Notificações");
+    System.out.println("10 - GerenciarEventos");
+    System.out.println("0 - Sair");
 
     }
 

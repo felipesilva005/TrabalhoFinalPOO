@@ -15,6 +15,9 @@ public class Voluntario extends Usuario {
         System.out.println("1 - Visualizar Animais Disponíveis");
         System.out.println("2 - Solicitar Adoção");
         System.out.println("3 - Consultar Minhas Solicitações");
-        System.out.println("4 - Sair");
+        System.out.println("4 - Notificações");
+        System.out.println("5 - Participar de Eventos");
+        System.out.println("6 - Histórico de Participação");
+        System.out.println("7 - Sair");
     }
 }

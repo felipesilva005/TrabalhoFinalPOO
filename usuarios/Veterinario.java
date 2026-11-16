@@ -35,7 +35,8 @@ public class Veterinario extends Usuario {
         System.out.println("2 - Registrar Atendimento");
         System.out.println("3 - Atualizar Estado de Saúde");
         System.out.println("4 - Ver Histórico Médico");
-        System.out.println("5 - Sair");
+        System.out.println("5 - Vizualizar Notificações");
+        System.out.println("6 - Sair");
     }
 
     public void atualizarEstadoSaude(Animal animal, EstadoSaude novoEstado) throws DadoInvalidoException, AcessoNegadoException {

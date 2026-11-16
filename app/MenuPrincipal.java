@@ -7,11 +7,16 @@ public class MenuPrincipal {
     private final GerenciadorUsuarios usuarios;
     private final GerenciadorAnimais animais;
     private final GerenciadorAdocao adocao;
-
-    public MenuPrincipal(GerenciadorUsuarios u, GerenciadorAnimais a, GerenciadorAdocao d) {
+    private final GerenciadorNotificacoes notificacoes;
+    private final GeradorRelatorios relatorios;
+    private final GerenciadorEventos eventos;
+    public MenuPrincipal(GerenciadorUsuarios u, GerenciadorAnimais a, GerenciadorAdocao d, GerenciadorNotificacoes n, GeradorRelatorios r, GerenciadorEventos e) {
         this.usuarios = u;
         this.animais = a;
         this.adocao = d;
+        this.notificacoes = n;
+        this.relatorios = r;
+        this.eventos = e;
     }
 
     public void executar() {
@@ -74,17 +79,17 @@ public class MenuPrincipal {
     private void direcionar(Usuario u) {
         if(u instanceof Administrador) {
             Administrador admin = (Administrador) u;
-            new MenuAdministrador(admin, usuarios, animais, adocao).executar();
+            new MenuAdministrador(admin, usuarios, animais, adocao, notificacoes, relatorios, eventos).executar();
 
-        }/*else if(u instanceof Veterinario) {
+        }else if(u instanceof Veterinario) {
             Veterinario vet = (Veterinario) u;
-            new MenuVeterinario(vet, animais).executar();
+            new MenuVeterinario(vet, animais, notificacoes).executar();
 
         }else if(u instanceof Voluntario) {
             Voluntario vol = (Voluntario) u;
-            new MenuVoluntario(vol, animais, adocao).executar();
+            new MenuVoluntario(vol, animais, adocao, notificacoes, eventos).executar();
 
-        }*/
+        }
     }
 
     private void cadastrar() {
