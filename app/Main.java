@@ -1,4 +1,5 @@
 package app;
+import animais.*;
 import excecoes.*;
 import servico.*;
 import usuarios.*;
@@ -22,6 +23,21 @@ public class Main {
         } catch (DadoInvalidoException | EmailJaCadastradoException | CpfJaCadastradoException e) {
             System.out.println("Erro ao criar administrador padrão: " + e.getMessage());
             return;
+
+        }
+
+        //Dados de Exemplo:
+        //Usuários
+        try {
+            //Voluntários
+            usuarios.cadastrarUsuario(new Voluntario("Felipe", "111.111.111-11", "felipe@gmail.com", "Senha@123"));
+            usuarios.cadastrarUsuario(new Voluntario("Leoneide", "222.222.222-11", "leoneide@gmail.com", "Senha@123"));
+
+            //Veterinário
+            usuarios.cadastrarUsuario(new Veterinario("Vitor", "333.333.333-33", "vitor@gmail.com", "Senha@123", "CRMV-CE 1234"));
+
+        }catch (DadoInvalidoException | EmailJaCadastradoException | CpfJaCadastradoException e) {
+            System.out.println("Erro ao criar dados de exemplo: " + e.getMessage());
 
         }
 
