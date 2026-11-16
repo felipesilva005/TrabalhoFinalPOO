@@ -1,5 +1,4 @@
 package app;
-import animais.*;
 import excecoes.*;
 import servico.*;
 import usuarios.*;
